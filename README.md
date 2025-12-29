@@ -14,10 +14,10 @@ Sistema de catalogação e inventário de objetos desenvolvido com NestJS e MySQ
 - [📁 Estrutura do Projeto](#estrutura-do-projeto)
 - [🗄️ Modelo de Dados](#modelo-de-dados)
 - [📝 Funcionalidades Implementadas](#funcionalidades-implementadas)
-- [📝 Acessar a Aplicação](#acessar-a-aplicacao)
+<!-- - [📝 Acessar a Aplicação](#acessar-a-aplicacao)
 - [🧪 Testando a Aplicação](#testando-a-aplicacao)
 - [⚠️ Problemas Conhecidos e Soluções](#problemas-conhecidos)
-- [📜 Scripts SQL](#scripts)
+- [📜 Scripts SQL](#scripts) -->
 - [📌 Possíveis Melhorias Futuras](#possiveis-melhorias)
 
 
@@ -290,9 +290,10 @@ Abaixo estão detalhadas as entidades do sistema, seus tipos de dados e restriç
 - [x] Consultar um log por ID
 - [x] Consultar um log por nome
 
+<!--
 ## <a id="acessar-a-aplicacao"></a> Acessar a Aplicação
 
-<!-- ## <a id="testando-a-aplicacao"></a> 🧪 Testando a Aplicação
+ ## <a id="testando-a-aplicacao"></a> 🧪 Testando a Aplicação
 
 ## <a id="problemas-conhecidos"></a> ⚠️ Problemas Conhecidos e Soluções
 
