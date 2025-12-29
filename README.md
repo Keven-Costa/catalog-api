@@ -4,8 +4,6 @@
 
 Sistema de catalogação e inventário de objetos desenvolvido com NestJS e MySQL
 
-
-
 ## 📌 Índice
 
 - [📋 Sobre o Projeto](#sobre-o-projeto)
@@ -135,6 +133,9 @@ CatalogAPI/
 
 ### MER
 ### DER
+<p align="center">
+  <img src="./assets/der.png" alt="Banner">
+</p>
 
 Abaixo estão detalhadas as entidades do sistema, seus tipos de dados e restrições.
 
