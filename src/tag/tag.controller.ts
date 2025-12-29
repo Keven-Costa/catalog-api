@@ -2,8 +2,10 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe, UseGua
 import { TagService } from './tag.service';
 import { CreateTagDto } from './dto/create-tag.dto';
 import { UpdateTagDto } from './dto/update-tag.dto';
+import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
 import { Tag } from './entities/tag.entity';
 
+@UseGuards( JwtAuthGuard )
 @Controller( 'tag' )
 export class TagController {
   constructor( private readonly tagService: TagService ) {}

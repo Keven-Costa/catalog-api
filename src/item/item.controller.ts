@@ -2,8 +2,10 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, HttpCode,
 import { ItemService } from './item.service';
 import { CreateItemDto } from './dto/create-item.dto';
 import { UpdateItemDto } from './dto/update-item.dto';
+import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
 import { Item } from './entities/item.entity';
 
+@UseGuards( JwtAuthGuard )
 @Controller( 'item' )
 export class ItemController {
   constructor( private readonly itemService: ItemService ) {}

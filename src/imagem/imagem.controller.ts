@@ -2,9 +2,10 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, HttpCode,
 import { ImagemService } from './imagem.service';
 import { CreateImagenDto } from './dto/create-imagem.dto';
 import { UpdateImagenDto } from './dto/update-imagem.dto';
-
+import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
 import { Imagem } from './entities/imagem.entity';
 
+@UseGuards( JwtAuthGuard )
 @Controller( 'imagem' )
 export class ImagemController {
   constructor( private readonly imagensService: ImagemService ) {}

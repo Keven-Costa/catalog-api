@@ -1,8 +1,10 @@
 import { Controller, Get, Post, Body, Param, Delete, ParseIntPipe, UseGuards, HttpCode, HttpStatus } from '@nestjs/common';
 import { LogsService } from './logs_.service';
 import { CreateLogDto } from './dto/create-logs_.dto';
+import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
 import { Log } from './entities/logs_.entity';
 
+@UseGuards( JwtAuthGuard )
 @Controller( 'logs' ) 
 export class LogsController {
   constructor( private readonly logsService: LogsService ) {}

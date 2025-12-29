@@ -2,8 +2,10 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards, HttpCode,
 import { LocalizacaoService } from './localizacao.service';
 import { CreateLocalizacaoDto } from './dto/create-localizacao.dto';
 import { UpdateLocalizacaoDto } from './dto/update-localizacao.dto';
+import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
 import { Localizacao } from './entities/localizacao.entity';
 
+@UseGuards( JwtAuthGuard )
 @Controller( 'localizacao' )
 export class LocalizacaoController {
   constructor( private readonly localizacaoService: LocalizacaoService ) {}
