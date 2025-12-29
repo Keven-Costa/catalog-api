@@ -1,98 +1,320 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
+  <img src="./assets/api.png" alt="Banner">
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Sistema de catalogação e inventário de objetos desenvolvido com NestJS e MySQL
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 📌 Índice
 
-## Project setup
+- [📋 Sobre o Projeto](#sobre-o-projeto)
+- [🛠️ Tecnologias Utilizadas](#tecnologias-utilizadas)
+- [📦 Requisitos e Downloads](#requisitos-e-download)
+- [📁 Estrutura do Projeto](#estrutura-do-projeto)
+- [🗄️ Modelo de Dados](#modelo-de-dados)
+- [📝 Funcionalidades Implementadas](#funcionalidades-implementadas)
+- [📝 Acessar a Aplicação](#acessar-a-aplicacao)
+- [🧪 Testando a Aplicação](#testando-a-aplicacao)
+- [⚠️ Problemas Conhecidos e Soluções](#problemas-conhecidos)
+- [📜 Scripts SQL](#scripts)
+- [📌 Possíveis Melhorias Futuras](#possiveis-melhorias)
 
-```bash
-$ npm install
+
+
+## <a id="sobre-o-projeto"></a> 📋 Sobre o Projeto
+<div align="justify">
+A CatalogAPI é uma solução para gestão de inventário e catalogação de ativos, desenvolvida para resolver a dificuldade de rastrear a localização e o estado de objetos em ambientes corporativos ou pessoais. O projeto oferece uma estrutura robusta para organizar itens através de categorias, tags e localizações físicas específicas, garantindo que o paradeiro de cada objeto seja conhecido. Além do controle de estoque, a API foca em segurança e transparência, implementando autenticação JWT e um sistema de auditoria imutável que registra cada alteração realizada nos itens.
+</div>
+
+## <a id="tecnologias-utilizadas"></a> 🛠️ Tecnologias Utilizadas
+
+### Core
+- **Node.js** - Ambiente de execução que permite rodar JavaScript no lado do servidor.
+
+- **TypeScript** - Superconjunto de JavaScript que adiciona tipagem estática e recursos avançados ao desenvolvimento.
+
+- **NestJS** - Framework progressivo para Node.js, focado em arquitetura modular, escalabilidade e facilidade de manutenção.
+
+### Banco de Dados
+- **TypeORM** - ORM (Object-Relational Mapper) para persistência e mapeamento de dados entre o código e o banco.
+
+- **MySQL** - Banco de dados relacional utilizado para armazenamento dos dados em produção.
+
+- **SQLite** - Banco de dados em memória utilizado para agilizar a execução de testes automatizados.
+
+### Segurança
+
+- **JWT (JSON Web Token)** - Padrão utilizado para a criação de tokens de acesso seguros para autenticação de usuários.
+
+- **Passport** - Middleware de autenticação modular para Node.js, facilitando a implementação da estratégia JWT.
+
+- **Bcrypt** - Biblioteca utilizada para a criptografia e hashing de senhas, garantindo a segurança dos dados sensíveis.
+
+### Utilitários
+- **Swagger (OpenAPI)** - Ferramenta para documentação interativa da API, permitindo testar os endpoints diretamente pelo navegador.
+
+- **class-validator** - Utilizado para a validação de dados de entrada (DTOs) através de decorators, garantindo a integridade dos dados.
+
+- **Jest** - Framework de testes em JavaScript com foco na simplicidade, utilizado para garantir a qualidade do código através de testes unitários.
+
+### IDE e Ferramentas
+
+- **Visual Studio Code** - Ambiente de desenvolvimento principal, utilizando extensões para suporte ao TypeScript, ESLint e NestJS.
+- **MySQL Workbench** - Ferramenta visual para modelagem de dados, administração do banco de dados MySQL e execução de queries SQL.
+- **Insomnia** - Cliente HTTP utilizado para testar os endpoints da API, validar o envio de JSON e verificar as respostas do servidor.
+- **Git** - Sistema de controle de versões utilizado para o gerenciamento de branches e histórico de commits.
+
+
+## <a id="requisitos-e-download"></a> 📦 Requisitos e Downloads
+
+Pré-requisitos
+Antes de executar o projeto, você precisará instalar as seguintes ferramentas:
+
+| Ferramenta | Versão | Link de Download |
+|------------|--------|-------------------|
+| **Node.js** | 18 ou superior | [Node.js Official](https://nodejs.org/) |
+| **npm** | 9.0+ | (Vem instalado com o Node) |
+| **Nest CLI** | Mais recente | `npm install -g @nestjs/cli` |
+| **MySQL** | 8.0+ | [MySQL Community](https://downloads.mysql.com/archives/workbench/)
+| **VS Code** | Latest | [Visual Studio Code](https://code.visualstudio.com/) |
+| **Insomnia** | Latest | [Insomnia](https://insomnia.rest/) |
+
+### Instalação Rápida
+
+1. **Node.js & npm**:
+   - Baixe e instale a versão **LTS** do Node.js (v18 ou superior).
+   - O `npm` será instalado automaticamente junto com o Node.
+   - Verifique as versões: `node -v` e `npm -v`.
+
+2. **NestJS CLI**:
+   - Instale a interface de linha de comando do NestJS globalmente para gerenciar o projeto.
+   - Comando: `npm install -g @nestjs/cli`
+   - Verifique: `nest --version`
+
+3. **Banco de Dados**:
+
+
+4. **Dependências do Projeto**:
+   - Navegue até a pasta raiz do projeto no terminal.
+   - Instale todas as bibliotecas listadas no `package.json`:
+   - Comando: `npm install`
+
+5. **Variáveis de Ambiente**:
+    -Crie um ar
+    - Copie o arquivo `.env.example` para um novo arquivo chamado `.env`.
+    - Configure as credenciais do banco de dados (DB_USER, DB_PASSWORD, JWT_SECRET).
+
+## <a id="estrutura-do-projeto"></a> 📁 Estrutura do Projeto
+
+```
+CatalogAPI/
+├── src/
+│   ├── main.ts              # Ponto de entrada da aplicação (configurações globais e Swagger)
+│   ├── app.module.ts        # Módulo raiz que centraliza e orquestra todos os outros módulos
+│   ├── auth/                # Módulo de Segurança (Autenticação e Autorização)
+│   │   ├── bcrypt/          # Lógica de hashing e criptografia de senhas
+│   │   ├── guard/           # Guards para proteger rotas (Ex: JwtAuthGuard)
+│   │   ├── strategy/        # Estratégias do Passport (Local e JWT)
+│   │   └── entities/        # Entidade de login/credenciais
+│   ├── usuario/             # Gestão de usuários do sistema
+│   │   ├── dto/             # Regras de validação de entrada (Create/Update)
+│   │   ├── entities/        # Mapeamento da tabela de usuários no banco
+│   │   └── ...              # Controller e Service (Lógica de negócio de usuários)
+│   ├── categoria/           # Classificação dos itens (Eletrônicos, Móveis, etc.)
+│   ├── item/                # O Core da API: gestão de objetos e inventário
+│   ├── localizacao/         # Identificação de onde o item está (ex: Prateleira A)
+│   ├── tag/                 # Etiquetas para filtragem dinâmica e organização
+│   ├── imagem/              # Gestão de arquivos e URLs de fotos dos itens
+│   └── logs_/               # Auditoria: registro imutável de todas as ações no sistema
+├── test/                    # Testes de integração (E2E - End-to-End)
+└── README.md                # Documentação principal do projeto
 ```
 
-## Compile and run the project
+## <a id="modelo-de-dados"></a> 🗄️ Modelo de Dados
 
-```bash
-# development
-$ npm run start
+### MER
+### DER
 
-# watch mode
-$ npm run start:dev
+Abaixo estão detalhadas as entidades do sistema, seus tipos de dados e restrições.
 
-# production mode
-$ npm run start:prod
-```
+### 👤 Entidade Usuário (User)
+*Responsável pelo acesso e autoria das modificações no sistema.*
 
-## Run tests
+| Campo | Tipo | Descrição |
+|-------|------|-----------|
+| `id` | int | Chave primária (Gerada automaticamente) |
+| `nome` | String(100) | Nome completo do usuário (obrigatório) |
+| `email` | String(100) | E-mail para login (obrigatório, único) |
+| `senha` | String(255) | Hash da senha (obrigatório) |
 
-```bash
-# unit tests
-$ npm run test
+---
 
-# e2e tests
-$ npm run test:e2e
+### 📦 Entidade Item
+*O objeto central do inventário.*
 
-# test coverage
-$ npm run test:cov
-```
+| Campo | Tipo | Descrição |
+|-------|------|-----------|
+| `id` | UUID | Chave primária |
+| `nome` | String(100) | Nome do item (obrigatório) |
+| `descricao` | Text | Descrição detalhada do objeto |
+| `valor_estimado` | Decimal(10,2) | Valor de mercado ou seguro (opcional) |
+| `data_aquisicao` | LocalDate | Data em que o item foi obtido |
+| `usuario_id` | UUID | FK para Usuário (Quem cadastrou) |
+| `categoria_id` | Int | FK para Categoria |
+| `localizacao_id` | Int | FK para Localização |
 
-## Deployment
+---
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+### 📂 Entidade Categoria
+*Classificações (ex: Eletrônicos, Ferramentas).*
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+| Campo | Tipo | Descrição |
+|-------|------|-----------|
+| `id` | Int | Chave primária, auto increment |
+| `nome` | String(50) | Nome da categoria (obrigatório, único) |
+| `descricao` | String | ... |
+| `itens` | String | ... |
 
-```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
-```
+---
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+### 📍 Entidade Localização (Spot)
+*Onde o item está fisicamente guardado.*
 
-## Resources
+| Campo | Tipo | Descrição |
+|-------|------|-----------|
+| `id` | Int | Chave primária, auto increment |
+| `nome` | String(100) | Nome do local (obrigatório) |
+| `detalhes` | String(255) | Ponto de referência ou observação |
+| `itens` | String(255) | ... |
 
-Check out a few resources that may come in handy when working with NestJS:
+---
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+### 🏷️ Entidade Tag
+*Etiquetas para buscas cruzadas.*
 
-## Support
+| Campo | Tipo | Descrição |
+|-------|------|-----------|
+| `id` | Int | Chave primária, auto increment |
+| `nome` | String(30) | Nome da tag (obrigatório, único) |
+| `cor_hex` | String | ... |
+| `itens` | String | ... |
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
+---
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### 🖼️ Entidade Imagem
+*Galeria de fotos vinculada aos itens.*
 
-## License
+| Campo | Tipo | Descrição |
+|-------|------|-----------|
+| `id` | int | Chave primária |
+| `url_imagem` | String(500) | Link ou caminho do arquivo |
+| `eh_principal` | Boolean | Define se é a foto de capa (default: false) |
+| `item_id` | int | FK para o Item vinculado |
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+---
+
+### 📜 Entidade Logs (Auditoria)
+*Registro imutável de movimentações (RN01).*
+
+| Campo | Tipo | Descrição |
+|-------|------|-----------|
+| `id` | Long | Chave primária, auto increment |
+| `acao` | String(50) | Tipo de operação (CREATE, UPDATE, DELETE) |
+| `descricao_mudanca` | String | Tipo de operação (CREATE, UPDATE, DELETE) |
+| `item_id` | UUID | ID do item afetado |
+| `usuario_id` | UUID | FK para o Usuário que realizou a ação |
+| `data_hora` | Timestamp | Momento exato da alteração |
+| `dados_anteriores` | JSON | Estado do objeto antes da alteração |
+
+## <a id="funcionalidades-implementadas"></a> 📝 Funcionalidades Implementadas
+
+### ✅ Usuário
+
+- [x] Cadastrar novo cliente com validação de e-mail
+- [x] Consultar todos os usuários
+- [x] Editar dados do usuários
+- [x] Remover usuários 
+- [x] Consultar um usuário por nome
+- [x] Consultar um usuário por ID
+
+### ✅ Item
+
+- [x] Cadastrar novo Item
+- [x] Consultar todos os Item
+- [x] Consultar um Item por nome
+- [x] Consultar um Item por ID
+- [x] Editar dados do Item
+- [x] Remover Item 
+
+### ✅ Categoria
+
+- [x] Cadastrar uma nova Categoria
+- [x] Consultar todos as Categoria
+- [x] Consultar uma Categoria por nome
+- [x] Consultar uma Categoria por ID
+- [x] Editar dados da Categoria
+- [x] Remover Categoria 
+
+### ✅ Localização
+
+- [x] Cadastrar uma nova localização
+- [x] Consultar todas as localização
+- [x] Consultar uma localização por nome
+- [x] Consultar uma localização por ID
+- [x] Editar dados da localização
+- [x] Remover localização 
+
+### ✅ Tag
+
+- [x] Cadastrar uma nova tag
+- [x] Consultar todas as tag
+- [x] Consultar uma tag por nome
+- [x] Consultar uma tag por ID
+- [x] Editar dados da tag
+- [x] Remover tag 
+
+### ✅ Imagem
+
+- [x] Cadastrar uma nova imagem
+- [x] Consultar todas as imagem
+- [x] Consultar uma imagem por ID
+- [x] Editar dados da imagem
+- [x] Remover imagem 
+
+### ✅ Logs
+
+- [x] Cadastrar um novo log
+- [x] Consultar todos os log
+- [x] Consultar um log por ID
+- [x] Consultar um log por nome
+
+## <a id="acessar-a-aplicacao"></a> Acessar a Aplicação
+
+<!-- ## <a id="testando-a-aplicacao"></a> 🧪 Testando a Aplicação
+
+## <a id="problemas-conhecidos"></a> ⚠️ Problemas Conhecidos e Soluções
+
+## <a id="scripts"></a> 📜 Scripts SQL
+### Criação Manual das Tabelas (se necessário) -->
+
+## <a id="possiveis-melhorias"></a> 📌 Possíveis Melhorias Futuras
+- 🌐 **Infraestrutura e Deploy**
+   - Containerização completa da aplicação com Docker Compose (API + MySQL).
+
+- 🖥️ **Frontend**
+   - Desenvolvimento de uma interface web para consumo da API.
+
+   - Autenticação via JWT no frontend.
+
+   - Dashboard com visão geral do inventário e métricas básicas.
+
+- 📄 **Documentação**
+   - Exemplos de requisições e respostas no Swagger para todos os endpoints.
+
+   - Criação de um Postman/Insomnia Collection versionado no repositório.
+
+ - 🗄️ **Modelagem de dados**
+   - Criar um MER (Modelo Entidade Relacionamento)
+   - Criar uM DER (Diagrama Entidade-Relacionamento)
