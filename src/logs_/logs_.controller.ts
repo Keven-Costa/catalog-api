@@ -2,9 +2,12 @@ import { Controller, Get, Post, Body, Param, Delete, ParseIntPipe, UseGuards, Ht
 import { LogsService } from './logs_.service';
 import { CreateLogDto } from './dto/create-logs_.dto';
 import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { Log } from './entities/logs_.entity';
 
 @UseGuards( JwtAuthGuard )
+@ApiTags( 'Logs' )
+@ApiBearerAuth()
 @Controller( 'logs' ) 
 export class LogsController {
   constructor( private readonly logsService: LogsService ) {}

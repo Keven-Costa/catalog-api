@@ -3,9 +3,12 @@ import { ItemService } from './item.service';
 import { CreateItemDto } from './dto/create-item.dto';
 import { UpdateItemDto } from './dto/update-item.dto';
 import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { Item } from './entities/item.entity';
 
 @UseGuards( JwtAuthGuard )
+@ApiTags( 'Item' )
+@ApiBearerAuth()
 @Controller( 'item' )
 export class ItemController {
   constructor( private readonly itemService: ItemService ) {}

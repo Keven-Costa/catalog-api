@@ -4,8 +4,11 @@ import { CreateImagenDto } from './dto/create-imagem.dto';
 import { UpdateImagenDto } from './dto/update-imagem.dto';
 import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
 import { Imagem } from './entities/imagem.entity';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
 @UseGuards( JwtAuthGuard )
+@ApiTags( 'Imagem' )
+@ApiBearerAuth()
 @Controller( 'imagem' )
 export class ImagemController {
   constructor( private readonly imagensService: ImagemService ) {}
