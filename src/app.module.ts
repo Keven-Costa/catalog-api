@@ -7,6 +7,7 @@ import { ItemModule } from './item/item.module';
 import { LocalizacaoModule } from './localizacao/localizacao.module';
 import { LogsModule } from './logs_/logs_.module';
 import { TagModule } from './tag/tag.module';
+import { UsuarioModule } from './usuario/usuario.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import { TagModule } from './tag/tag.module';
     LocalizacaoModule,
     LogsModule,
     TagModule,
+    UsuarioModule,
   ],
 } )
 export class AppModule {}
