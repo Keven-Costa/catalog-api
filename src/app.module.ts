@@ -5,6 +5,7 @@ import { CategoriaModule } from './categoria/categoria.module';
 import { ImagemModule } from './imagem/imagem.module';
 import { ItemModule } from './item/item.module';
 import { LocalizacaoModule } from './localizacao/localizacao.module';
+import { LogsModule } from './logs_/logs_.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { LocalizacaoModule } from './localizacao/localizacao.module';
     ImagemModule,
     ItemModule,
     LocalizacaoModule,
+    LogsModule,
   ],
 } )
 export class AppModule {}
