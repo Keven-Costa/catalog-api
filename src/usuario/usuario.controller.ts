@@ -2,8 +2,9 @@ import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPip
 import { UsuarioService } from "./usuario.service";
 import { Usuario } from "./entities/usuario.entity";
 import { JwtAuthGuard } from "../auth/guard/jwt-auth.guard";
-import { ApiOperation } from "@nestjs/swagger";
+import { ApiOperation, ApiTags } from "@nestjs/swagger";
 
+@ApiTags( 'Usuários' )
 @Controller( '/usuarios' )
 export class UsuarioController {
     constructor( private readonly usuarioService: UsuarioService ) { }
