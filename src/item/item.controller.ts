@@ -28,6 +28,11 @@ export class ItemController {
     return this.itemService.findOneById( id );
   }
 
+  @Get( '/nome/:name' )
+  async findOneByName( @Param( 'name' ) name: string ): Promise< Item > {
+    return this.itemService.findOneByName( name );
+  }
+
   @Patch( ':id' )
   update( 
     @Param( 'id', ParseIntPipe ) id: number, 
