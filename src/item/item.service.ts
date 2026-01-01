@@ -37,7 +37,7 @@ export class ItemService {
 
     const createLogDto = {
       acao: 'Criar',
-      descricao_mudanca: "teste",
+      descricao_mudanca: "",
       item_id: itemSalvo.id
     }
 
