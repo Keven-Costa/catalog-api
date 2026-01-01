@@ -8,5 +8,6 @@ import { Log } from './entities/logs_.entity';
   imports: [ TypeOrmModule.forFeature( [ Log ] ) ],
   controllers: [ LogsController ],
   providers: [ LogsService ],
+  exports: [ LogsService ], 
 } )
 export class LogsModule {}

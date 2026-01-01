@@ -16,7 +16,7 @@ export class Tag {
   @Column( { nullable: true } )
   cor_hex: string;
 
-  @ApiProperty()
+  @ApiProperty( { type: () => [ Item ] } ) 
   @ManyToMany( () => Item, ( item ) => item.tags )
   itens: Item[];
 }
