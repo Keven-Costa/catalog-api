@@ -2,17 +2,20 @@ import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPip
 import { UsuarioService } from "./usuario.service";
 import { Usuario } from "./entities/usuario.entity";
 import { JwtAuthGuard } from "../auth/guard/jwt-auth.guard";
+import { ApiOperation } from "@nestjs/swagger";
 
 @Controller( '/usuarios' )
 export class UsuarioController {
     constructor( private readonly usuarioService: UsuarioService ) { }
 
+    @ApiOperation({ summary: 'Cadastar um usuário' })
     @Post( '/cadastrar' )
     @HttpCode( HttpStatus.CREATED )
     async create( @Body() usuario: Usuario ): Promise< Usuario > {
         return this.usuarioService.create( usuario )
     }
 
+    @ApiOperation({ summary: 'Consultar todos os usuários' })
     @UseGuards( JwtAuthGuard )
     @Get()
     @HttpCode( HttpStatus.OK )
@@ -20,6 +23,7 @@ export class UsuarioController {
         return this.usuarioService.findAll();
     }
 
+    @ApiOperation({ summary: 'Consultar um usuário pelo ID' })
     @UseGuards( JwtAuthGuard )
     @Get( '/:id' )
     @HttpCode( HttpStatus.OK )
@@ -27,6 +31,7 @@ export class UsuarioController {
         return this.usuarioService.findById( id )
     }
 
+    @ApiOperation({ summary: 'Atualizar um usuário' })
     @UseGuards( JwtAuthGuard )
     @Put( '/atualizar' )
     @HttpCode( HttpStatus.OK )
@@ -34,6 +39,7 @@ export class UsuarioController {
         return this.usuarioService.update( usuario )
     }
 
+    @ApiOperation({ summary: 'Deletar um usuário' })
     @UseGuards( JwtAuthGuard )
     @Delete( '/:id' )
     @HttpCode( HttpStatus.NO_CONTENT )
