@@ -1,6 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { Item } from '../../item/entities/item.entity';
 import { ApiProperty } from '@nestjs/swagger';
+import { Expose } from 'class-transformer';
 
 @Entity( 'logs' )
 export class Log {
@@ -21,7 +22,7 @@ export class Log {
   timestamp: Date; 
 
   @ApiProperty()
-  @ManyToOne( () => Item, ( item ) => item.logs )
+  @ManyToOne( () => Item, { onDelete: 'SET NULL', nullable: true } )
   @JoinColumn( { name: 'item_id' } )
-  item: Item; 
+  item: Item;
 }
