@@ -8,15 +8,17 @@ Sistema de catalogação e inventário de objetos desenvolvido com NestJS e MySQ
 
 - [📋 Sobre o Projeto](#sobre-o-projeto)
 - [🛠️ Tecnologias Utilizadas](#tecnologias-utilizadas)
-- [📦 Requisitos e Downloads](#requisitos-e-download)
+- [📦 Pré-requisitos e Instalação](#pre-requisitos-e-instalacao)
+- [▶️ Como Executar o Projeto](#como-executar-o-projeto)
 - [📁 Estrutura do Projeto](#estrutura-do-projeto)
 - [🗄️ Modelo de Dados](#modelo-de-dados)
 - [📝 Funcionalidades Implementadas](#funcionalidades-implementadas)
+- [📌 Possíveis Melhorias Futuras](#possiveis-melhorias)
+
 <!-- - [📝 Acessar a Aplicação](#acessar-a-aplicacao)
 - [🧪 Testando a Aplicação](#testando-a-aplicacao)
 - [⚠️ Problemas Conhecidos e Soluções](#problemas-conhecidos)
 - [📜 Scripts SQL](#scripts) -->
-- [📌 Possíveis Melhorias Futuras](#possiveis-melhorias)
 
 
 
@@ -64,44 +66,86 @@ A CatalogAPI é uma solução para gestão de inventário e catalogação de ati
 - **Git** - Sistema de controle de versões utilizado para o gerenciamento de branches e histórico de commits.
 
 
-## <a id="requisitos-e-download"></a> 📦 Requisitos e Downloads
+## <a id="pre-requisitos-e-instalacao"></a> 📦 Pré-requisitos e Instalação
 
-Pré-requisitos
-Antes de executar o projeto, você precisará instalar as seguintes ferramentas:
+Antes de começar, você precisará ter instalado em sua máquina o **Node.js** e o **MySQL**. Este projeto foi desenvolvido utilizando o **VS Code** como IDE preferencial.
+
+### 1. Ferramentas Necessárias
 
 | Ferramenta | Versão | Link de Download |
-|------------|--------|-------------------|
-| **Node.js** | 18 ou superior | [Node.js Official](https://nodejs.org/) |
-| **npm** | 9.0+ | (Vem instalado com o Node) |
-| **Nest CLI** | Mais recente | `npm install -g @nestjs/cli` |
-| **MySQL** | 8.0+ | [MySQL Community](https://downloads.mysql.com/archives/workbench/)
-| **VS Code** | Latest | [Visual Studio Code](https://code.visualstudio.com/) |
-| **Insomnia** | Latest | [Insomnia](https://insomnia.rest/) |
+| --- | --- | --- |
+| **Node.js** | 18 ou superior | [nodejs.org](https://nodejs.org/) |
+| **MySQL** | 8.0 ou superior | [mysql.com](https://dev.mysql.com/downloads/) |
+| **VS Code** | Mais recente | [code.visualstudio.com](https://code.visualstudio.com/) |
+| **Insomnia** | Mais recente | [insomnia.rest](https://insomnia.rest/) |
 
-### Instalação Rápida
+### 2. Configuração do Ambiente
 
-1. **Node.js & npm**:
-   - Baixe e instale a versão **LTS** do Node.js (v18 ou superior).
-   - O `npm` será instalado automaticamente junto com o Node.
-   - Verifique as versões: `node -v` e `npm -v`.
+Após instalar o Node.js, abra o seu terminal (ou o terminal do VS Code) e siga os passos abaixo:
 
-2. **NestJS CLI**:
-   - Instale a interface de linha de comando do NestJS globalmente para gerenciar o projeto.
-   - Comando: `npm install -g @nestjs/cli`
-   - Verifique: `nest --version`
+#### **Instalar o NestJS CLI**
 
-3. **Banco de Dados**:
+O NestJS CLI é necessário para gerenciar e rodar a aplicação:
 
+```bash
+npm install -g @nestjs/cli
 
-4. **Dependências do Projeto**:
-   - Navegue até a pasta raiz do projeto no terminal.
-   - Instale todas as bibliotecas listadas no `package.json`:
-   - Comando: `npm install`
+```
 
-5. **Variáveis de Ambiente**:
-    -Crie um ar
-    - Copie o arquivo `.env.example` para um novo arquivo chamado `.env`.
-    - Configure as credenciais do banco de dados (DB_USER, DB_PASSWORD, JWT_SECRET).
+#### **Configurar o Banco de Dados**
+
+Certifique-se de que o serviço do MySQL está rodando e crie o banco de dados principal:
+
+```sql
+CREATE DATABASE db_catalog_api;
+
+```
+
+## <a id="como-executar-o-projeto"></a> ▶️ Como Executar o Projeto
+
+### 1. Clonagem e Instalação
+
+No seu terminal, clone o repositório e instale as dependências necessárias:
+
+```bash
+# Clone o repositório
+git clone https://github.com/seu-usuario/catalog-api.git
+
+# Acesse a pasta do projeto
+cd catalog-api
+
+# Instale as dependências
+npm install
+
+```
+
+### 2. Configuração das Variáveis de Ambiente
+
+A aplicação depende de variáveis de ambiente para se conectar ao banco e garantir a segurança.
+
+1. Crie um arquivo chamado `.env` na raiz do projeto (copie o conteúdo do `.env.example`).
+2. Preencha as credenciais do seu MySQL (`DB_HOST`, `DB_USER`, `DB_PASS`, etc.).
+3. Gere uma chave secreta para o JWT com o comando abaixo e cole-a no campo `JWT_SECRET`:
+
+```bash
+node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
+
+```
+
+### 3. Execução da Aplicação
+
+Com tudo configurado, inicie o servidor de desenvolvimento:
+
+```bash
+# Modo desenvolvimento com hot-reload
+npm run start:dev
+
+```
+
+### 4. Acesso e Documentação (Swagger)
+
+Após iniciar, a API estará disponível em `http://localhost:3000`.
+
 
 ## <a id="estrutura-do-projeto"></a> 📁 Estrutura do Projeto
 
@@ -131,8 +175,7 @@ CatalogAPI/
 
 ## <a id="modelo-de-dados"></a> 🗄️ Modelo de Dados
 
-### MER
-### DER
+### Diagrama Entidade e Relacionamento
 <p align="center">
   <img src="./assets/der.png" alt="Banner">
 </p>
@@ -156,12 +199,11 @@ Abaixo estão detalhadas as entidades do sistema, seus tipos de dados e restriç
 
 | Campo | Tipo | Descrição |
 |-------|------|-----------|
-| `id` | UUID | Chave primária |
+| `id` | int | Chave primária |
 | `nome` | String(100) | Nome do item (obrigatório) |
 | `descricao` | Text | Descrição detalhada do objeto |
 | `valor_estimado` | Decimal(10,2) | Valor de mercado ou seguro (opcional) |
 | `data_aquisicao` | LocalDate | Data em que o item foi obtido |
-| `usuario_id` | UUID | FK para Usuário (Quem cadastrou) |
 | `categoria_id` | Int | FK para Categoria |
 | `localizacao_id` | Int | FK para Localização |
 
@@ -174,8 +216,8 @@ Abaixo estão detalhadas as entidades do sistema, seus tipos de dados e restriç
 |-------|------|-----------|
 | `id` | Int | Chave primária, auto increment |
 | `nome` | String(50) | Nome da categoria (obrigatório, único) |
-| `descricao` | String | ... |
-| `itens` | String | ... |
+| `descricao` | String | Breve detalhamento sobre o propósito da categoria |
+| `itens` | String | Lista de itens vinculados a esta categoria |
 
 ---
 
@@ -186,8 +228,8 @@ Abaixo estão detalhadas as entidades do sistema, seus tipos de dados e restriç
 |-------|------|-----------|
 | `id` | Int | Chave primária, auto increment |
 | `nome` | String(100) | Nome do local (obrigatório) |
-| `detalhes` | String(255) | Ponto de referência ou observação |
-| `itens` | String(255) | ... |
+| `detalhes` | String(255) | Informações adicionais ou pontos de referência para facilitar a busca. |
+| `itens` | String(255) | Lista de itens armazenados nesta localização específica |
 
 ---
 
@@ -198,8 +240,7 @@ Abaixo estão detalhadas as entidades do sistema, seus tipos de dados e restriç
 |-------|------|-----------|
 | `id` | Int | Chave primária, auto increment |
 | `nome` | String(30) | Nome da tag (obrigatório, único) |
-| `cor_hex` | String | ... |
-| `itens` | String | ... |
+| `itens` | String | Coleção de itens que utilizam esta etiqueta |
 
 
 ---
@@ -221,29 +262,29 @@ Abaixo estão detalhadas as entidades do sistema, seus tipos de dados e restriç
 
 | Campo | Tipo | Descrição |
 |-------|------|-----------|
-| `id` | Long | Chave primária, auto increment |
+| `id` | int | Chave primária, auto increment |
 | `acao` | String(50) | Tipo de operação (CREATE, UPDATE, DELETE) |
 | `descricao_mudanca` | String | Tipo de operação (CREATE, UPDATE, DELETE) |
-| `item_id` | UUID | ID do item afetado |
-| `usuario_id` | UUID | FK para o Usuário que realizou a ação |
-| `data_hora` | Timestamp | Momento exato da alteração |
+| `item_id` | int | ID do item afetado |
+| `usuario_id` | int | FK para o Usuário que realizou a ação |
+| `data_hora` | Date | Momento exato da alteração |
 | `dados_anteriores` | JSON | Estado do objeto antes da alteração |
 
 ## <a id="funcionalidades-implementadas"></a> 📝 Funcionalidades Implementadas
 
 ### ✅ Usuário
 
-- [x] Cadastrar novo cliente com validação de e-mail
-- [x] Consultar todos os usuários
-- [x] Editar dados do usuários
-- [x] Remover usuários 
-- [x] Consultar um usuário por nome
-- [x] Consultar um usuário por ID
+- [x] Cadastrar novo Usuário com validação de e-mail
+- [x] Consultar todos os Usuários
+- [x] Consultar um Usuário por nome
+- [x] Consultar um Usuário por ID
+- [x] Editar dados do Usuário
+- [x] Remover Usuário 
 
 ### ✅ Item
 
 - [x] Cadastrar novo Item
-- [x] Consultar todos os Item
+- [x] Consultar todos os Itens
 - [x] Consultar um Item por nome
 - [x] Consultar um Item por ID
 - [x] Editar dados do Item
@@ -252,7 +293,7 @@ Abaixo estão detalhadas as entidades do sistema, seus tipos de dados e restriç
 ### ✅ Categoria
 
 - [x] Cadastrar uma nova Categoria
-- [x] Consultar todos as Categoria
+- [x] Consultar todas as Categorias
 - [x] Consultar uma Categoria por nome
 - [x] Consultar uma Categoria por ID
 - [x] Editar dados da Categoria
@@ -260,36 +301,35 @@ Abaixo estão detalhadas as entidades do sistema, seus tipos de dados e restriç
 
 ### ✅ Localização
 
-- [x] Cadastrar uma nova localização
-- [x] Consultar todas as localização
-- [x] Consultar uma localização por nome
-- [x] Consultar uma localização por ID
-- [x] Editar dados da localização
-- [x] Remover localização 
+- [x] Cadastrar uma nova Localização
+- [x] Consultar todas as Localizações
+- [x] Consultar uma Localização por nome
+- [x] Consultar uma Localização por ID
+- [x] Editar dados da Localização
+- [x] Remover Localização 
 
 ### ✅ Tag
 
-- [x] Cadastrar uma nova tag
-- [x] Consultar todas as tag
-- [x] Consultar uma tag por nome
-- [x] Consultar uma tag por ID
-- [x] Editar dados da tag
-- [x] Remover tag 
+- [x] Cadastrar uma nova Tag
+- [x] Consultar todas as Tags
+- [x] Consultar uma Tag por nome
+- [x] Consultar uma Tag por ID
+- [x] Editar dados da Tag
+- [x] Remover Tag 
 
 ### ✅ Imagem
 
-- [x] Cadastrar uma nova imagem
-- [x] Consultar todas as imagem
-- [x] Consultar uma imagem por ID
-- [x] Editar dados da imagem
-- [x] Remover imagem 
+- [x] Cadastrar uma nova Imagem
+- [x] Consultar todas as Imagens
+- [x] Consultar uma Imagem por ID
+- [x] Editar dados da Imagem
+- [x] Remover Imagem 
 
 ### ✅ Logs
 
-- [x] Cadastrar um novo log
-- [x] Consultar todos os log
-- [x] Consultar um log por ID
-- [x] Consultar um log por nome
+- [x] Consultar todos os Logs
+- [x] Consultar um Log por ID
+- [x] Consultar um Log por nome
 
 <!--
 ## <a id="acessar-a-aplicacao"></a> Acessar a Aplicação
@@ -319,4 +359,3 @@ Abaixo estão detalhadas as entidades do sistema, seus tipos de dados e restriç
 
  - 🗄️ **Modelagem de dados**
    - Criar um MER (Modelo Entidade Relacionamento)
-   - Criar uM DER (Diagrama Entidade-Relacionamento)
