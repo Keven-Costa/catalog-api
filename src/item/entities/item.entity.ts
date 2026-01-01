@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne, OneToMany, ManyToMany, JoinTable, JoinColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, ManyToOne, OneToMany, ManyToMany, JoinTable, JoinColumn, DeleteDateColumn } from 'typeorm';
 import { Categoria } from '../../categoria/entities/categoria.entity';
 import { Localizacao } from '../../localizacao/entities/localizacao.entity';
 import { Tag } from '../../tag/entities/tag.entity';
@@ -31,6 +31,10 @@ export class Item {
   @ApiProperty()
   @CreateDateColumn()
   created_at: Date;
+  
+  @ApiProperty()
+  @DeleteDateColumn()
+  deletedAt: Date;
 
   @ApiProperty( { type: () => Categoria } ) 
   @ManyToOne( () => Categoria, ( categoria ) => categoria.itens )
@@ -50,8 +54,11 @@ export class Item {
   @OneToMany( () => Log, ( log ) => log.item )
   logs: Log[];
 
-  @ApiProperty()
-  @ManyToMany( () => Tag )
-  @JoinTable( { name: 'item_tag' } )
+  @ManyToMany( () => Tag, (tag) => tag.itens )
+  @JoinTable( {
+    name: 'item_tag', 
+    joinColumn: { name: 'item_id', referencedColumnName: 'id' },
+    inverseJoinColumn: { name: 'tag_id', referencedColumnName: 'id' }
+  } )
   tags: Tag[];
 }
