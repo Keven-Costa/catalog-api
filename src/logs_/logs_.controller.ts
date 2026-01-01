@@ -4,6 +4,7 @@ import { CreateLogDto } from './dto/create-logs_.dto';
 import { JwtAuthGuard } from '../auth/guard/jwt-auth.guard';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { Log } from './entities/logs_.entity';
+import { LogResponseDto } from './dto/log-response.dto';
 
 @UseGuards( JwtAuthGuard )
 @ApiTags( 'Logs' )
@@ -13,18 +14,28 @@ export class LogsController {
   constructor( private readonly logsService: LogsService ) {}
 
   @Post()
-  async create( @Body() createLogDto: CreateLogDto ): Promise < Log > {
+  async create( @Body() createLogDto: CreateLogDto ): Promise < LogResponseDto > {
     return this.logsService.create( createLogDto );
   }
 
   @Get()
-  async findAll(): Promise < Log[] > {
+  async findAll(): Promise < LogResponseDto[] > {
     return this.logsService.findAll();
   }
 
   @Get( ':id' )
-  async findOne( @Param( 'id', ParseIntPipe ) id: number ): Promise < Log > {
+  async findOne( @Param( 'id', ParseIntPipe ) id: number ): Promise < LogResponseDto > {
     return this.logsService.findOneById( id );
+  }
+
+  @Get( '/by-name-item/:name' )
+  async findLogByNameItem( @Param( 'name' ) name: string ): Promise < LogResponseDto[] > {
+    return this.logsService.findLogByNameItem( name );
+  }
+
+  @Get( '/by-id-item/:id' )
+  async findLogByIdItem( @Param( 'id', ParseIntPipe ) id: number ): Promise < LogResponseDto[] > {
+    return this.logsService.findLogByIdItem( id );
   }
 
   @Delete( ':id' )
