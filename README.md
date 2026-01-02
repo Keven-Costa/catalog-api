@@ -146,6 +146,9 @@ npm run start:dev
 
 Após iniciar, a API estará disponível em `http://localhost:4000/swagger#/`.
 
+<p align="center">
+  <img src="./assets/swagger-1.png" alt="Banner">
+</p>
 
 ## <a id="estrutura-do-projeto"></a> 📁 Estrutura do Projeto
 
