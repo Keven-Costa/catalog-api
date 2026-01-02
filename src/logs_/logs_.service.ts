@@ -17,7 +17,7 @@ export class LogsService {
       id: log.id,
       acao: log.acao,
       descricao_mudanca: log.descricao_mudanca ? log.descricao_mudanca.split( '\n' ) : [],
-      timestamp: log.timestamp.toLocaleString( 'pt-BR', {
+      data_hora: log.data_hora.toLocaleString( 'pt-BR', {
         timeZone: 'America/Sao_Paulo',
       } ),
       item: {
@@ -42,7 +42,7 @@ export class LogsService {
   async findAll(): Promise< LogResponseDto[] > {
     const logs = await this.repository.find( {
       relations: [ 'item' ],
-      order: { timestamp: 'DESC' },
+      order: { data_hora: 'DESC' },
     } );
     return logs.map( log => this.mapToResponse( log ) );
   }
@@ -51,7 +51,7 @@ export class LogsService {
     const logs = await this.repository.find( {
       where: { item: { nome: name } },
       relations: [ 'item' ],
-      order: { timestamp: 'DESC' }
+      order: { data_hora: 'DESC' }
     } );
 
     if ( !logs || logs.length === 0 ) {
@@ -65,7 +65,7 @@ export class LogsService {
     const logs = await this.repository.find( {
       where: { item: { id: id } },
       relations: [ 'item' ],
-      order: { timestamp: 'DESC' }
+      order: { data_hora: 'DESC' }
     } );
 
     if ( !logs || logs.length === 0 ) {

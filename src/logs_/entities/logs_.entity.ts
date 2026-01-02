@@ -19,7 +19,7 @@ export class Log {
 
   @ApiProperty()
   @CreateDateColumn()
-  timestamp: Date; 
+  data_hora: Date; 
 
   @ApiProperty()
   @ManyToOne( () => Item, { onDelete: 'SET NULL', nullable: true } )
