@@ -39,14 +39,14 @@ export class Item {
   @OneToMany( () => Imagem, ( imagem ) => imagem.item )
   imagens: Imagem[];
 
-  @ManyToMany( () => Tag, (tag) => tag.itens )
+  @ManyToMany( () => Tag, ( tag ) => tag.itens )
   @JoinTable( {
     name: 'item_tag', 
-    joinColumns: [{ name: 'item_id' }],
-    inverseJoinColumns: [{ name: 'tag_id' }]
+    joinColumns: [ { name: 'item_id' } ],
+    inverseJoinColumns: [ { name: 'tag_id' } ]
   } )
   tags: Tag[];
 
   @OneToMany( () => Log, ( log ) => log.item )
-  logs: Log[]; // Verifique se Log está importado corretamente
+  logs: Log[];
 }

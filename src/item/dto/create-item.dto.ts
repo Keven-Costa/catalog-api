@@ -3,67 +3,67 @@ import { IsDate, IsNotEmpty, IsNumber, IsOptional, IsString, IsArray, Min } from
 import { Type } from "class-transformer";
 
 export class CreateItemDto {
-  @ApiProperty({
+  @ApiProperty( {
     description: 'Nome do item',
     example: 'Arduino Uno R3'
-  })
+  } )
   @IsString()
-  @IsNotEmpty({ message: 'O nome do item é obrigatório' })
+  @IsNotEmpty( { message: 'O nome do item é obrigatório' } )
   nome: string;
 
-  @ApiProperty({
+  @ApiProperty( {
     description: 'Descrição detalhada do item',
     example: 'Placa de microcontrolador baseada no ATmega328P',
     required: false
-  })
+  } )
   @IsString()
   @IsOptional()
   descricao?: string;
 
-  @ApiProperty({
+  @ApiProperty( {
     description: 'Valor estimado de mercado ou compra',
     example: 85.50,
     required: false
-  })
-  @IsNumber({ maxDecimalPlaces: 2 })
-  @Min(0)
+  } )
+  @IsNumber( { maxDecimalPlaces: 2 } )
+  @Min( 0 )
   @IsOptional()
   valor_estimado?: number;
 
-  @ApiProperty({
-    description: 'Data em que o item foi adquirido (ISO 8601)',
-    example: '2024-03-20T10:00:00Z',
+  @ApiProperty( {
+    description: 'Data em que o item',
+    example: '2021-09-05',
     required: false
-  })
+  } )
   @IsDate()
   @IsOptional()
-  @Type(() => Date) 
+  @Type( () => Date ) 
   data_aquisicao?: Date;
 
-  @ApiProperty({
+  @ApiProperty( {
     description: 'ID da categoria vinculada',
     example: 1
-  })
+  } )
   @IsNumber()
   @IsNotEmpty()
   categoria_id: number;
 
-  @ApiProperty({
+  @ApiProperty( {
     description: 'ID da localização física',
     example: 2
-  })
+  } )
   @IsNumber()
   @IsNotEmpty()
   local_id: number;
 
-  @ApiProperty({
+  @ApiProperty( {
     description: 'Lista de IDs das tags para classificação',
-    example: [1, 2, 5],
-    type: [Number],
+    example: [ 1, 2, 5 ],
+    type: [ Number ],
     required: false
-  })
+  } )
   @IsArray()
-  @IsNumber({}, { each: true }) 
+  @IsNumber( {}, { each: true } ) 
   @IsOptional()
   tag_ids?: number[];
 }

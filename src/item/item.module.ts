@@ -8,8 +8,7 @@ import { LogsModule } from '../logs_/logs_.module';
 
 @Module( {
   imports: [ TypeOrmModule.forFeature( [ Item, Tag ] ),
-  forwardRef( () => LogsModule ) // Use forwardRef aqui  
-  ],
+  forwardRef( () => LogsModule ) ],
   controllers: [ ItemController ],
   providers: [ ItemService ],
 } )

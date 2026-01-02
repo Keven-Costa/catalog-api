@@ -8,36 +8,36 @@ import { Tag } from './entities/tag.entity';
 
 @UseGuards( JwtAuthGuard )
 @ApiTags( 'Tag' )
-@ApiBearerAuth('access-token')
+@ApiBearerAuth( 'access-token' )
 @Controller( 'tag' )
 export class TagController {
   constructor( private readonly tagService: TagService ) {}
 
-  @ApiOperation({ summary: 'Cadastar um tag' })
+  @ApiOperation( { summary: 'Cadastar um tag' } )
   @Post()
   async create( @Body() createTagDto: CreateTagDto ): Promise< Tag > {
     return this.tagService.create( createTagDto );
   }
 
-  @ApiOperation({ summary: 'Consultar todas as tags' })
+  @ApiOperation( { summary: 'Consultar todas as tags' } )
   @Get()
   async findAll(): Promise< Tag[] > {
     return this.tagService.findAll();
   }
 
-  @ApiOperation({ summary: 'Consultar uma tag pelo ID' })
+  @ApiOperation( { summary: 'Consultar uma tag pelo ID' } )
   @Get( ':id' )
   async findOne( @Param( 'id', ParseIntPipe ) id: number ): Promise< Tag > {
     return this.tagService.findOneById( id );
   }
 
-  @ApiOperation({ summary: 'Consultar uma tag pelo nome' })
+  @ApiOperation( { summary: 'Consultar uma tag pelo nome' } )
   @Get( '/name/:name' )
   async findByName( @Param( 'name' ) name: string ): Promise< Tag > {
     return this.tagService.findOneByName( name );
   }
 
-  @ApiOperation({ summary: 'Atulizar uma tag' })
+  @ApiOperation( { summary: 'Atulizar uma tag' } )
   @Patch( ':id' )
   async update(
     @Param( 'id', ParseIntPipe ) id: number, 
@@ -45,7 +45,7 @@ export class TagController {
     return this.tagService.update( id, updateTagDto );
   }
 
-  @ApiOperation({ summary: 'Deletar uma tag' })
+  @ApiOperation( { summary: 'Deletar uma tag' } )
   @Delete( ':id' )
   @HttpCode( HttpStatus.NO_CONTENT )
   async remove( @Param( 'id', ParseIntPipe ) id: number ): Promise< void > {

@@ -8,30 +8,30 @@ import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @UseGuards( JwtAuthGuard )
 @ApiTags( 'Imagem' )
-@ApiBearerAuth('access-token')
+@ApiBearerAuth( 'access-token' )
 @Controller( 'imagem' )
 export class ImagemController {
   constructor( private readonly imagensService: ImagemService ) {}
 
-  @ApiOperation({ summary: 'Cadastrar uma imagem' })
+  @ApiOperation( { summary: 'Cadastrar uma imagem' } )
   @Post()
   async create( @Body() createImagenDto: CreateImagenDto ): Promise< Imagem > {
     return this.imagensService.create( createImagenDto );
   }
 
-  @ApiOperation({ summary: 'Consultar todas as imagens' })
+  @ApiOperation( { summary: 'Consultar todas as imagens' } )
   @Get()
   async findAll(): Promise< Imagem[] > {
     return this.imagensService.findAll();
   }
 
-  @ApiOperation({ summary: 'Consultar uma imagem pelo ID' })
+  @ApiOperation( { summary: 'Consultar uma imagem pelo ID' } )
   @Get( ':id' )
   async findOneById( @Param( 'id', ParseIntPipe ) id: number ): Promise< Imagem > {
     return this.imagensService.findOneById( id );
   }
 
-  @ApiOperation({ summary: 'Atualizar uma imagem' })
+  @ApiOperation( { summary: 'Atualizar uma imagem' } )
   @Patch( ':id' )
   async update( 
     @Param( 'id', ParseIntPipe ) id: number, 
@@ -39,7 +39,7 @@ export class ImagemController {
     return this.imagensService.update( id, updateImagenDto );
   }
 
-  @ApiOperation({ summary: 'Deletar uma imagem' })
+  @ApiOperation( { summary: 'Deletar uma imagem' } )
   @Delete( ':id' )
   @HttpCode( HttpStatus.NO_CONTENT )
   async remove( @Param( 'id', ParseIntPipe ) id: number ): Promise< void > {

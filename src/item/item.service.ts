@@ -48,7 +48,7 @@ export class ItemService {
 
   async findAll(): Promise< Item[] > {
     return this.itemRepository.find( {
-      relations: [ 'categoria', 'localizacao', 'tags', 'imagens',  ],
+      relations: [ 'categoria', 'localizacao', 'tags', 'imagens', 'logs' ],
     } );
   }
 
@@ -68,7 +68,7 @@ export class ItemService {
 async findOneByName( nome: string ): Promise< Item > {
   const item = await this.itemRepository.findOne( {
     where: { nome: nome },
-    relations: ['categoria', 'localizacao', 'tags', 'imagens', 'logs']
+    relations: [ 'categoria', 'localizacao', 'tags', 'imagens', 'logs' ]
   } );
 
   if ( !item ) {

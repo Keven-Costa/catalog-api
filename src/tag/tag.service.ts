@@ -41,7 +41,7 @@ export class TagService {
     });
 
     if ( !tag ) {
-      throw new NotFoundException(`Tag '${name}' não encontrada`);
+      throw new NotFoundException(`Tag '${ name }' não encontrada`);
     }
 
     return tag;

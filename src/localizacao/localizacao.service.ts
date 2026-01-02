@@ -18,7 +18,7 @@ export class LocalizacaoService {
   }
 
   async findAll(): Promise< Localizacao[] > {
-    return this.repository.find( { relations: ['itens'] } );
+    return this.repository.find( { relations: [ 'itens' ] } );
   }
 
   async findOneById( id: number ): Promise< Localizacao > {
@@ -35,12 +35,12 @@ export class LocalizacaoService {
   }
 
   async findOneByName( name: string ): Promise< Localizacao > {
-    const localizacao = await this.repository.findOne({
+    const localizacao = await this.repository.findOne( {
       where: { nome: name },
-    });
+    } );
 
-    if (!localizacao) {
-      throw new NotFoundException( `Localização '${name}' não encontrada` );
+    if ( !localizacao ) {
+      throw new NotFoundException( `Localização '${ name }' não encontrada` );
     }
 
     return localizacao;

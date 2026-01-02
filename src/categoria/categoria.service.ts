@@ -12,7 +12,7 @@ export class CategoriaService {
     private readonly repository: Repository< Categoria >,
   ) {}
 
-  async create( createCategoriaDto: CreateCategoriaDto ): Promise< Categoria> {
+  async create( createCategoriaDto: CreateCategoriaDto ): Promise< Categoria > {
     const categoria = this.repository.create( createCategoriaDto );
     return this.repository.save( categoria );
   }
@@ -34,8 +34,8 @@ export class CategoriaService {
       where: { nome: name },
     });
 
-    if (!categoria) {
-      throw new NotFoundException(`Categoria '${name}' não encontrada`);
+    if ( !categoria ) {
+      throw new NotFoundException( `Categoria '${ name }' não encontrada` );
     }
 
     return categoria;

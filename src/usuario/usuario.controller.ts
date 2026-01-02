@@ -9,15 +9,15 @@ import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
 export class UsuarioController {
     constructor( private readonly usuarioService: UsuarioService ) { }
 
-    @ApiOperation({ summary: 'Cadastar um usuário' })
+    @ApiOperation( { summary: 'Cadastar um usuário' } )
     @Post( '/cadastrar' )
     @HttpCode( HttpStatus.CREATED )
     async create( @Body() usuario: Usuario ): Promise< Usuario > {
         return this.usuarioService.create( usuario )
     }
 
-    @ApiOperation({ summary: 'Consultar todos os usuários' })
-    @ApiBearerAuth('access-token')
+    @ApiOperation( { summary: 'Consultar todos os usuários' } )
+    @ApiBearerAuth( 'access-token' )
     @UseGuards( JwtAuthGuard )
     @Get()
     @HttpCode( HttpStatus.OK )
@@ -25,8 +25,8 @@ export class UsuarioController {
         return this.usuarioService.findAll();
     }
 
-    @ApiOperation({ summary: 'Consultar um usuário pelo ID' })
-    @ApiBearerAuth('access-token')
+    @ApiOperation( { summary: 'Consultar um usuário pelo ID' } )
+    @ApiBearerAuth( 'access-token' )
     @UseGuards( JwtAuthGuard )
     @Get( '/:id' )
     @HttpCode( HttpStatus.OK )
@@ -34,8 +34,8 @@ export class UsuarioController {
         return this.usuarioService.findById( id )
     }
 
-    @ApiOperation({ summary: 'Atualizar um usuário' })
-    @ApiBearerAuth('access-token')
+    @ApiOperation( { summary: 'Atualizar um usuário' } )
+    @ApiBearerAuth( 'access-token' )
     @UseGuards( JwtAuthGuard )
     @Put( '/atualizar' )
     @HttpCode( HttpStatus.OK )
@@ -43,8 +43,8 @@ export class UsuarioController {
         return this.usuarioService.update( usuario )
     }
 
-    @ApiOperation({ summary: 'Deletar um usuário' })
-    @ApiBearerAuth('access-token')
+    @ApiOperation( { summary: 'Deletar um usuário' } )
+    @ApiBearerAuth( 'access-token' )
     @UseGuards( JwtAuthGuard )
     @Delete( '/:id' )
     @HttpCode( HttpStatus.NO_CONTENT )
