@@ -8,7 +8,7 @@ import { Tag } from './entities/tag.entity';
 
 @UseGuards( JwtAuthGuard )
 @ApiTags( 'Tag' )
-@ApiBearerAuth()
+@ApiBearerAuth('access-token')
 @Controller( 'tag' )
 export class TagController {
   constructor( private readonly tagService: TagService ) {}

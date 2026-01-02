@@ -8,7 +8,7 @@ import { Localizacao } from './entities/localizacao.entity';
 
 @UseGuards( JwtAuthGuard )
 @ApiTags( 'Localização' )
-@ApiBearerAuth()
+@ApiBearerAuth('access-token')
 @Controller( 'localizacao' )
 export class LocalizacaoController {
   constructor( private readonly localizacaoService: LocalizacaoService ) {}

@@ -1,4 +1,4 @@
-import { PartialType } from '@nestjs/mapped-types';
+import { PartialType } from '@nestjs/swagger';
 import { CreateImagenDto } from './create-imagem.dto';
 
-export class UpdateImagenDto extends PartialType( CreateImagenDto ) {}
+export class UpdateImagenDto extends PartialType( CreateImagenDto ) { }

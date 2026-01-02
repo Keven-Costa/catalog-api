@@ -2,7 +2,7 @@ import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, ParseIntPip
 import { UsuarioService } from "./usuario.service";
 import { Usuario } from "./entities/usuario.entity";
 import { JwtAuthGuard } from "../auth/guard/jwt-auth.guard";
-import { ApiOperation, ApiTags } from "@nestjs/swagger";
+import { ApiBearerAuth, ApiOperation, ApiTags } from "@nestjs/swagger";
 
 @ApiTags( 'Usuários' )
 @Controller( '/usuarios' )
@@ -17,6 +17,7 @@ export class UsuarioController {
     }
 
     @ApiOperation({ summary: 'Consultar todos os usuários' })
+    @ApiBearerAuth('access-token')
     @UseGuards( JwtAuthGuard )
     @Get()
     @HttpCode( HttpStatus.OK )
@@ -25,6 +26,7 @@ export class UsuarioController {
     }
 
     @ApiOperation({ summary: 'Consultar um usuário pelo ID' })
+    @ApiBearerAuth('access-token')
     @UseGuards( JwtAuthGuard )
     @Get( '/:id' )
     @HttpCode( HttpStatus.OK )
@@ -33,6 +35,7 @@ export class UsuarioController {
     }
 
     @ApiOperation({ summary: 'Atualizar um usuário' })
+    @ApiBearerAuth('access-token')
     @UseGuards( JwtAuthGuard )
     @Put( '/atualizar' )
     @HttpCode( HttpStatus.OK )
@@ -41,6 +44,7 @@ export class UsuarioController {
     }
 
     @ApiOperation({ summary: 'Deletar um usuário' })
+    @ApiBearerAuth('access-token')
     @UseGuards( JwtAuthGuard )
     @Delete( '/:id' )
     @HttpCode( HttpStatus.NO_CONTENT )

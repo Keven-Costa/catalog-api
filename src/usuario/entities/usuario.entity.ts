@@ -1,28 +1,22 @@
-import { ApiProperty } from "@nestjs/swagger"
-import { IsEmail, IsNotEmpty, MinLength } from "class-validator"
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
+import { ApiProperty } from "@nestjs/swagger";
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Exclude } from "class-transformer";
 
 @Entity( { name: "usuarios" } )    
 export class Usuario {
-    @ApiProperty()
     @PrimaryGeneratedColumn()
-    id: number
+    id: number;
 
-    @ApiProperty()
-    @IsNotEmpty()
-    @Column( { length: 255, nullable: false } )
-    nome: string
+    @ApiProperty( { example: 'ADM' } )
+    @Column({ length: 255, nullable: false })
+    nome: string;
 
-    @ApiProperty()
-    @IsEmail()
-    @IsNotEmpty()
-    @Column( { length: 255, nullable: false } )
-    usuario: string
+    @ApiProperty( { example: 'adm@email.com' } )
+    @Column({ length: 255, nullable: false, unique: true })
+    usuario: string;
 
-    @ApiProperty()
-    @MinLength(8)
-    @IsNotEmpty()
-    @Column( { length: 255, nullable: false } )
-    senha: string
-
+    @ApiProperty( { example: 'adm1234' } )
+    @Exclude() 
+    @Column({ length: 255, nullable: false })
+    senha: string;
 }

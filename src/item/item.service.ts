@@ -48,7 +48,7 @@ export class ItemService {
 
   async findAll(): Promise< Item[] > {
     return this.itemRepository.find( {
-      relations: [ 'categoria', 'localizacao', 'tags', 'imagens', 'logs' ],
+      relations: [ 'categoria', 'localizacao', 'tags', 'imagens',  ],
     } );
   }
 

@@ -8,7 +8,7 @@ import { Categoria } from './entities/categoria.entity';
 
 @UseGuards( JwtAuthGuard )
 @ApiTags( 'Categoria' )
-@ApiBearerAuth()
+@ApiBearerAuth('access-token')
 @Controller( 'categoria' )
 export class CategoriaController {
   constructor( private readonly categoriaService: CategoriaService ) {}

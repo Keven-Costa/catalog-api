@@ -8,6 +8,7 @@ import { LocalizacaoModule } from './localizacao/localizacao.module';
 import { LogsModule } from './logs_/logs_.module';
 import { TagModule } from './tag/tag.module';
 import { UsuarioModule } from './usuario/usuario.module';
+import { SeedModule } from './seed/seed.module';
 
 @Module({
   imports: [
@@ -37,6 +38,7 @@ import { UsuarioModule } from './usuario/usuario.module';
     LogsModule,
     TagModule,
     UsuarioModule,
+    SeedModule
   ],
 } )
 export class AppModule {}

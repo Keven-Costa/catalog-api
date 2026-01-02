@@ -8,7 +8,7 @@ import { LogResponseDto } from './dto/log-response.dto';
 
 @UseGuards( JwtAuthGuard )
 @ApiTags( 'Logs' )
-@ApiBearerAuth()
+@ApiBearerAuth('access-token')
 @Controller( 'logs' ) 
 export class LogsController {
   constructor( private readonly logsService: LogsService ) {}

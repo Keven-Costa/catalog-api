@@ -118,6 +118,22 @@ cd catalog-api
 npm install
 
 ```
+---
+
+### 🌱 Seed do Banco de Dados
+
+Este projeto possui um sistema de **Auto-Seeding**.
+
+Ao iniciar a aplicação pela primeira vez, o `SeedService` detecta se o banco de dados está vazio e insere automaticamente os dados necessários para teste. Isso inclui:
+
+* **Categorias**: Eletrônicos, Ferramentas e Mobiliário.
+* **Localizações**: Almoxarifado Central e Laboratório de IoT.
+* **Tags**: Urgente, Novo e Disponível.
+* **Itens**: Exemplos de itens como "Arduino Uno R3" e "Multímetro Digital" já vinculados às categorias e tags acima.
+
+> **Nota**: O processo de seed só ocorre se a tabela de itens estiver vazia, evitando a duplicidade de dados em reinicializações subsequentes.
+
+---
 
 ### 2. Configuração das Variáveis de Ambiente
 

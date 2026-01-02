@@ -8,7 +8,7 @@ import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @UseGuards( JwtAuthGuard )
 @ApiTags( 'Imagem' )
-@ApiBearerAuth()
+@ApiBearerAuth('access-token')
 @Controller( 'imagem' )
 export class ImagemController {
   constructor( private readonly imagensService: ImagemService ) {}
