@@ -359,5 +359,5 @@ Abaixo estão detalhadas as entidades do sistema, seus tipos de dados e restriç
 
  - 🗄️ **Modelagem de dados**
    - Criar um MER (Modelo Entidade Relacionamento).
-   - Criar relacionamento entre as entidade Log e Usuário.
-   - Adicionar uma propriedade do tipo JSON para armazenar o estado do `item` antes da alteração.
+   - Criar relacionamento entre as entidade `Log` e `Usuário`.
+   - Adicionar uma propriedade do tipo JSON para armazenar o estado do `Item` antes da alteração.
