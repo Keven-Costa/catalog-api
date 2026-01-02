@@ -124,7 +124,7 @@ npm install
 A aplicação depende de variáveis de ambiente para se conectar ao banco e garantir a segurança.
 
 1. Crie um arquivo chamado `.env` na raiz do projeto (copie o conteúdo do `.env.example`).
-2. Preencha as credenciais do seu MySQL (`DB_HOST`, `DB_USER`, `DB_PASS`, etc.).
+2. Preencha as credenciais do seu MySQL (`DB_HOST`, `DB_USERNAME`, `DB_PASSWORD`, etc.).
 3. Gere uma chave secreta para o JWT com o comando abaixo e cole-a no campo `JWT_SECRET`:
 
 ```bash
@@ -144,7 +144,7 @@ npm run start:dev
 
 ### 4. Acesso e Documentação (Swagger)
 
-Após iniciar, a API estará disponível em `http://localhost:3000`.
+Após iniciar, a API estará disponível em `http://localhost:4000/swagger#/`.
 
 
 ## <a id="estrutura-do-projeto"></a> 📁 Estrutura do Projeto
@@ -258,17 +258,16 @@ Abaixo estão detalhadas as entidades do sistema, seus tipos de dados e restriç
 ---
 
 ### 📜 Entidade Logs (Auditoria)
-*Registro imutável de movimentações (RN01).*
+*Registro imutável de movimentações.*
 
 | Campo | Tipo | Descrição |
 |-------|------|-----------|
 | `id` | int | Chave primária, auto increment |
-| `acao` | String(50) | Tipo de operação (CREATE, UPDATE, DELETE) |
-| `descricao_mudanca` | String | Tipo de operação (CREATE, UPDATE, DELETE) |
+| `acao` | String(50) | Tipo de operação (Criar, Atualizar, Excluir) |
+| `descricao_mudanca` | String |  Descrição da mudança |
 | `item_id` | int | ID do item afetado |
-| `usuario_id` | int | FK para o Usuário que realizou a ação |
 | `data_hora` | Date | Momento exato da alteração |
-| `dados_anteriores` | JSON | Estado do objeto antes da alteração |
+<!-- | `usuario_id` | int | FK para o Usuário que realizou a ação | -->
 
 ## <a id="funcionalidades-implementadas"></a> 📝 Funcionalidades Implementadas
 
@@ -329,7 +328,8 @@ Abaixo estão detalhadas as entidades do sistema, seus tipos de dados e restriç
 
 - [x] Consultar todos os Logs
 - [x] Consultar um Log por ID
-- [x] Consultar um Log por nome
+- [x] Consultar os Logs pelo nome do item
+- [x] Consultar os Log ID do item
 
 <!--
 ## <a id="acessar-a-aplicacao"></a> Acessar a Aplicação
@@ -358,4 +358,6 @@ Abaixo estão detalhadas as entidades do sistema, seus tipos de dados e restriç
    - Criação de um Postman/Insomnia Collection versionado no repositório.
 
  - 🗄️ **Modelagem de dados**
-   - Criar um MER (Modelo Entidade Relacionamento)
+   - Criar um MER (Modelo Entidade Relacionamento).
+   - Criar relacionamento entre as entidade Log e Usuário.
+   - Adicionar uma propriedade do tipo JSON para armazenar o estado do `item` antes da alteração.
