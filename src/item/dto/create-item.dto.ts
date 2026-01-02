@@ -58,7 +58,7 @@ export class CreateItemDto {
 
   @ApiProperty( {
     description: 'Lista de IDs das tags para classificação',
-    example: [ 1, 2, 5 ],
+    example: [ 1, 2,],
     type: [ Number ],
     required: false
   } )

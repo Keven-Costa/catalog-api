@@ -17,13 +17,13 @@ async function bootstrap() {
         'ogkeven278@gmail.com'
       )
       .setVersion( '1.0.0' )
-      .addTag( 'Item', 'Operações de gerenciamento de itens do catálogo' )
       .addTag( 'Categoria', 'Classificações dos itens' )
       .addTag( 'Localização', 'Gestão dos locais físicos onde os itens estão armazenados' )
-      .addTag( 'Imagem', 'Gerenciamento de galeria de fotos ' )
+      .addTag( 'Item', 'Operações de gerenciamento de itens do catálogo' )
       .addTag( 'Usuários', 'Controle de perfis, permissões e dados dos usuários do sistema' )
       .addTag( 'Logs', 'Histórico de auditoria e movimentações' )
       .addTag( 'Auth', 'Autenticação e controle de acesso' )
+      .addTag( 'Imagem', 'Gerenciamento de galeria de fotos ' )
       .addBearerAuth(
         {
           type: 'http',
